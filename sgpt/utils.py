@@ -1,3 +1,4 @@
+import glob
 import json
 import os
 import platform
@@ -76,12 +77,13 @@ def list_scripts_with_content(directory: str) -> List[Tuple[str, str]]:
          # Add other extensions as needed
      )
     scripts = []
-    for filename in os.listdir(directory):
-        if filename.endswith(script_extensions):
-            filepath = os.path.join(directory, filename)
-            with open(filepath, 'r') as file:
-                content = file.read()
-            scripts.append((filename, content))
+    filepaths = []
+    for ext in script_extensions:
+        filepaths =filepaths + [f for r in os.walk(directory) for f in glob.glob(os.path.join(r[0],'*'+ext))]
+    for filepath in filepaths:
+        with open(filepath, 'r') as file:
+            content = file.read()
+        scripts.append((filepath, content))
     return scripts
 
 def parse_modifications(completion: str, script_list: List[Tuple[str, str]]) -> List[Tuple[str, str]]:
