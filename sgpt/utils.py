@@ -108,8 +108,7 @@ def modify_or_create_scripts(modifications: List, directory: str) -> None:
     :param directory: The directory where the scripts are to be modified or created.
     """
     # Apply the modifications or create new scripts
-    for filename,content in modifications.items():
-        filepath = os.path.join(directory, filename)
+    for filepath,content in modifications.items():
 
         # Write the new content to the file, creating it if it does not exist
         with open(filepath, 'w') as file:
