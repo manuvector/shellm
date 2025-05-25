@@ -2,8 +2,8 @@ import os
 from pathlib import Path
 from unittest.mock import patch
 
-from sgpt.config import cfg
-from sgpt.role import DefaultRoles, SystemRole
+from shellm.config import cfg
+from shellm.role import DefaultRoles, SystemRole
 
 from .utils import app, cmd_args, comp_args, mock_comp, runner
 
@@ -71,7 +71,7 @@ def test_describe_shell_stdin(completion):
 def test_shell_run_description(completion, system):
     completion.side_effect = [mock_comp("echo hello"), mock_comp("prints hello")]
     args = {"prompt": "echo hello", "--shell": True}
-    inputs = "__sgpt__eof__\nd\ne\n"
+    inputs = "__shellm__eof__\nd\ne\n"
     result = runner.invoke(app, cmd_args(**args), input=inputs)
     shell = os.environ.get("SHELL", "/bin/sh")
     system.assert_called_once_with(f"{shell} -c 'echo hello'")
@@ -128,7 +128,7 @@ def test_shell_repl(completion, mock_system):
     chat_path.unlink(missing_ok=True)
 
     args = {"--repl": chat_name, "--shell": True}
-    inputs = ["__sgpt__eof__", "list folder", "sort by name", "e", "exit()"]
+    inputs = ["__shellm__eof__", "list folder", "sort by name", "e", "exit()"]
     result = runner.invoke(app, cmd_args(**args), input="\n".join(inputs))
     shell = os.environ.get("SHELL", "/bin/sh")
     mock_system.called_once_with(f"{shell} -c 'ls | sort'")

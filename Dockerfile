@@ -8,4 +8,4 @@ RUN pip install --no-cache /app && mkdir -p /tmp/shell_gpt
 
 VOLUME /tmp/shell_gpt
 
-ENTRYPOINT ["sgpt"]
+ENTRYPOINT ["shellm"]

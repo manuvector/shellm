@@ -9,7 +9,7 @@
 				"cSpell.words": [
 					"OPENAI",
 					"secho",
-					"sgpt",
+					"shellm",
 					"Typer"
 				],
 				"[python]": {
@@ -32,7 +32,7 @@
 							"name": "Python: Module",
 							"type": "python",
 							"request": "launch",
-							"module": "sgpt",
+							"module": "shellm",
 							"justMyCode": true,
 							"args": ["--chat", "init", "hello"]
 						}

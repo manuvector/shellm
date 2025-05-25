@@ -3,8 +3,8 @@
 set -e
 set -x
 
-mypy sgpt
-ruff sgpt tests scripts
-black sgpt tests --check
-isort sgpt tests scripts --check-only
+mypy shellm
+ruff shellm tests scripts
+black shellm tests --check
+isort shellm tests scripts --check-only
 codespell

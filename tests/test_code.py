@@ -1,8 +1,8 @@
 from pathlib import Path
 from unittest.mock import patch
 
-from sgpt.config import cfg
-from sgpt.role import DefaultRoles, SystemRole
+from shellm.config import cfg
+from shellm.role import DefaultRoles, SystemRole
 
 from .utils import app, cmd_args, comp_args, mock_comp, runner
 
@@ -88,7 +88,7 @@ def test_code_repl(completion):
     chat_path.unlink(missing_ok=True)
 
     args = {"--repl": chat_name, "--code": True}
-    inputs = ["__sgpt__eof__", "print hello", "also print world", "exit()"]
+    inputs = ["__shellm__eof__", "print hello", "also print world", "exit()"]
     result = runner.invoke(app, cmd_args(**args), input="\n".join(inputs))
 
     expected_messages = [

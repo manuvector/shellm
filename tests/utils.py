@@ -4,8 +4,8 @@ import typer
 from litellm import completion as completion
 from typer.testing import CliRunner
 
-from sgpt import main
-from sgpt.config import cfg
+from shellm import main
+from shellm.config import cfg
 
 runner = CliRunner()
 app = typer.Typer()

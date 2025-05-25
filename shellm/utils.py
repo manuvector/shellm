@@ -9,8 +9,8 @@ from typing import Any, Callable, List, Tuple
 import typer
 from click import BadParameter, UsageError
 
-from sgpt.__version__ import __version__
-from sgpt.integration import bash_integration, zsh_integration
+from shellm.__version__ import __version__
+from shellm.integration import bash_integration, zsh_integration
 
 
 def get_edited_prompt() -> str:
@@ -150,7 +150,7 @@ def install_shell_integration(*_args: Any) -> None:
 
 
 @option_callback
-def get_sgpt_version(*_args: Any) -> None:
+def get_shellm_version(*_args: Any) -> None:
     """
     Displays the current installed version of ShellGPT
     """

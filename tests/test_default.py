@@ -4,9 +4,9 @@ from unittest.mock import patch
 import typer
 from typer.testing import CliRunner
 
-from sgpt import config, main
-from sgpt.__version__ import __version__
-from sgpt.role import DefaultRoles, SystemRole
+from shellm import config, main
+from shellm.__version__ import __version__
+from shellm.role import DefaultRoles, SystemRole
 
 from .utils import app, cmd_args, comp_args, mock_comp, runner
 
@@ -135,7 +135,7 @@ def test_default_repl(completion):
     chat_path.unlink(missing_ok=True)
 
     args = {"--repl": chat_name}
-    inputs = ["__sgpt__eof__", "my number is 6", "my number + 2?", "exit()"]
+    inputs = ["__shellm__eof__", "my number is 6", "my number + 2?", "exit()"]
     result = runner.invoke(app, cmd_args(**args), input="\n".join(inputs))
 
     expected_messages = [
@@ -168,7 +168,7 @@ def test_default_repl_stdin(completion):
     my_app.command()(main)
 
     args = {"--repl": chat_name}
-    inputs = ["this is stdin", "__sgpt__eof__", "prompt", "another", "exit()"]
+    inputs = ["this is stdin", "__shellm__eof__", "prompt", "another", "exit()"]
     result = my_runner.invoke(my_app, cmd_args(**args), input="\n".join(inputs))
 
     expected_messages = [

@@ -27,7 +27,7 @@ pip install -e ."[dev,test]"
 With your environment set up and the issue assigned, you can start working on your solution. Get to know the existing codebase and adhere to the project's coding style and conventions. Write clean, modular, and maintainable code to facilitate understanding and review. Commit your changes frequently to document your progress.
 
 ### Testing
-**This is a crucial step.** Any changes that implement a new feature or modify existing features should include tests. **Unverified code will not be merged.** These tests should call `sgpt` with defined arguments, capture the output, and verify that the feature works as expected. Refer to the `tests` folder for examples.
+**This is a crucial step.** Any changes that implement a new feature or modify existing features should include tests. **Unverified code will not be merged.** These tests should call `shellm` with defined arguments, capture the output, and verify that the feature works as expected. Refer to the `tests` folder for examples.
 
 ### Pull Request
 Before creating a pull request, run `scripts/lint.sh` and `scripts/tests.sh` to ensure all linters and tests pass. In your pull request, provide a high-level description of your changes and detailed instructions for testing them, including any necessary commands.

@@ -2,8 +2,8 @@ import json
 from pathlib import Path
 from unittest.mock import patch
 
-from sgpt.config import cfg
-from sgpt.role import SystemRole
+from shellm.config import cfg
+from shellm.role import SystemRole
 
 from .utils import app, cmd_args, comp_args, mock_comp, runner
 

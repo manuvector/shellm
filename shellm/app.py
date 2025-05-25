@@ -8,17 +8,17 @@ import typer
 from click import BadArgumentUsage
 from click.types import Choice
 
-from sgpt.config import cfg
-from sgpt.function import get_openai_schemas
-from sgpt.handlers.chat_handler import ChatHandler
-from sgpt.handlers.default_handler import DefaultHandler
-from sgpt.handlers.repl_handler import ReplHandler
-from sgpt.handlers.multiscript_handler import MultiScriptHandler
-from sgpt.llm_functions.init_functions import install_functions as inst_funcs
-from sgpt.role import DefaultRoles, SystemRole
-from sgpt.utils import (
+from shellm.config import cfg
+from shellm.function import get_openai_schemas
+from shellm.handlers.chat_handler import ChatHandler
+from shellm.handlers.default_handler import DefaultHandler
+from shellm.handlers.repl_handler import ReplHandler
+from shellm.handlers.multiscript_handler import MultiScriptHandler
+from shellm.llm_functions.init_functions import install_functions as inst_funcs
+from shellm.role import DefaultRoles, SystemRole
+from shellm.utils import (
     get_edited_prompt,
-    get_sgpt_version,
+    get_shellm_version,
     install_shell_integration,
     run_command,
 )
@@ -102,7 +102,7 @@ def main(
         False,
         "--version",
         help="Show version.",
-        callback=get_sgpt_version,
+        callback=get_shellm_version,
     ),
     chat: str = typer.Option(
         None,
@@ -174,12 +174,12 @@ def main(
         # In some cases, we need to pass stdin along with inputs.
         # When we want part of stdin to be used as a init prompt,
         # but rest of the stdin to be used as a inputs. For example:
-        # echo "hello\n__sgpt__eof__\nThis is input" | sgpt --repl temp
+        # echo "hello\n__shellm__eof__\nThis is input" | shellm --repl temp
         # In this case, "hello" will be used as a init prompt, and
         # "This is input" will be used as "interactive" input to the REPL.
         # This is useful to test REPL with some initial context.
         for line in sys.stdin:
-            if "__sgpt__eof__" in line:
+            if "__shellm__eof__" in line:
                 break
             stdin += line
         prompt = f"{stdin}\n\n{prompt}" if prompt else stdin

@@ -1,7 +1,7 @@
 """
 This test module will execute real commands using shell.
-This means it will call sgpt.py with command line arguments.
-Make sure you have your API key in place ~/.cfg/shell_gpt/.sgptrc
+This means it will call shellm.py with command line arguments.
+Make sure you have your API key in place ~/.cfg/shell_gpt/.shellmrc
 or ENV variable OPENAI_API_KEY.
 It is useful for quick tests, saves a bit time.
 """
@@ -18,11 +18,11 @@ from uuid import uuid4
 import typer
 from typer.testing import CliRunner
 
-from sgpt.__version__ import __version__
-from sgpt.app import main
-from sgpt.config import cfg
-from sgpt.handlers.handler import Handler
-from sgpt.role import SystemRole
+from shellm.__version__ import __version__
+from shellm.app import main
+from shellm.config import cfg
+from shellm.handlers.handler import Handler
+from shellm.role import SystemRole
 
 runner = CliRunner()
 app = typer.Typer()
@@ -380,7 +380,7 @@ class TestShellGpt(TestCase):
         # assert "command not found" not in result.stdout
         # assert "hello world" in stdout.split("\n")[-1]
 
-    @patch("sgpt.handlers.handler.Handler.get_completion")
+    @patch("shellm.handlers.handler.Handler.get_completion")
     def test_model_option(self, mocked_get_completion):
         dict_arguments = {
             "prompt": "What is the capital of the Czech Republic?",
