@@ -107,13 +107,15 @@ def modify_or_create_scripts(modifications: List, directory: str) -> None:
                        for modifying or creating scripts.
     :param directory: The directory where the scripts are to be modified or created.
     """
-    # Apply the modifications or create new scripts
-    for filepath,content in modifications.items():
-        os.makedirs(os.path.dirname(filepath), exist_ok=True)
+    for rel_path, content in modifications.items():
+        full_path = os.path.join(directory, rel_path)   
+        dir_path  = os.path.dirname(full_path)
 
-        # Write the new content to the file, creating it if it does not exist
-        with open(filepath, 'w') as file:
-            file.write(content)
+        if dir_path:                                    
+            os.makedirs(dir_path, exist_ok=True)
+
+        with open(full_path, "w", encoding="utf-8") as f:
+            f.write(content)
 
 def option_callback(func: Callable) -> Callable:  # type: ignore
     def wrapper(cls: Any, value: str) -> None:
