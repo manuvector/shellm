@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "shellm"
+name = "shellm-cli"
 description = "A command-line productivity tool powered by large language models, will help you accomplish your tasks faster and more efficiently."
 keywords = ["shell", "gpt", "openai", "ollama", "cli", "productivity", "cheet-sheet"]
 readme = "README.md"
@@ -53,7 +53,7 @@ dev = [
 ]
 
 [project.scripts]
-llm = "llm:cli"
+llm = "shellm:cli"
 
 [project.urls]
 homepage = "https://github.com/manuvector/shellm"
@@ -61,10 +61,10 @@ repository = "https://github.com/manuvector/shellm"
 documentation = "https://github.com/manuvector/shellm/blob/main/README.md"
 
 [tool.hatch.version]
-path = "llm/__version__.py"
+path = "shellm/__version__.py"
 
 [tool.hatch.build.targets.wheel]
-only-include = ["llm"]
+only-include = ["shellm"]
 
 [tool.hatch.build.targets.sdist]
 only-include = [
