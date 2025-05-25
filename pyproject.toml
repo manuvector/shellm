@@ -3,13 +3,13 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "shell_gpt"
+name = "shellm"
 description = "A command-line productivity tool powered by large language models, will help you accomplish your tasks faster and more efficiently."
 keywords = ["shell", "gpt", "openai", "ollama", "cli", "productivity", "cheet-sheet"]
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.6"
-authors = [{ name = "Farkhod Sadykov", email = "farkhod@sadykov.dev" }]
+authors = [{ name = "Manuel Carbonell", email = "manuel.carbonell.nunez@gmail.com"}]
 dynamic = ["version"]
 classifiers = [
     "Operating System :: OS Independent",
@@ -53,22 +53,22 @@ dev = [
 ]
 
 [project.scripts]
-sgpt = "sgpt:cli"
+llm = "llm:cli"
 
 [project.urls]
-homepage = "https://github.com/ther1d/shell_gpt"
-repository = "https://github.com/ther1d/shell_gpt"
-documentation = "https://github.com/TheR1D/shell_gpt/blob/main/README.md"
+homepage = "https://github.com/manuvector/shellm"
+repository = "https://github.com/manuvector/shellm"
+documentation = "https://github.com/manuvector/shellm/blob/main/README.md"
 
 [tool.hatch.version]
-path = "sgpt/__version__.py"
+path = "llm/__version__.py"
 
 [tool.hatch.build.targets.wheel]
-only-include = ["sgpt"]
+only-include = ["llm"]
 
 [tool.hatch.build.targets.sdist]
 only-include = [
-    "sgpt",
+    "llm",
     "tests",
     "README.md",
     "LICENSE",

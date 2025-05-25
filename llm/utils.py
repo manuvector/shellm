@@ -109,6 +109,7 @@ def modify_or_create_scripts(modifications: List, directory: str) -> None:
     """
     # Apply the modifications or create new scripts
     for filepath,content in modifications.items():
+        os.makedirs(os.path.dirname(filepath), exist_ok=True)
 
         # Write the new content to the file, creating it if it does not exist
         with open(filepath, 'w') as file:
