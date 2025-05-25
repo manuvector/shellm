@@ -68,7 +68,7 @@ only-include = ["shellm"]
 
 [tool.hatch.build.targets.sdist]
 only-include = [
-    "llm",
+    "shellm",
     "tests",
     "README.md",
     "LICENSE",
