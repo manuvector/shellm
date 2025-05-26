@@ -8,6 +8,8 @@ import typer
 from click import BadArgumentUsage
 from click.types import Choice
 
+from yaspin import yaspin
+
 from shellm.config import cfg
 from shellm.function import get_openai_schemas
 from shellm.handlers.chat_handler import ChatHandler
@@ -235,15 +237,19 @@ def main(
             functions=function_schemas,
         )
     if multiscript_code:
-        MultiScriptHandler(role_class).handle(
-            prompt=prompt,
-            project_path = project_path,
-            model=model,
-            temperature=temperature,
-            top_p=top_p,
-            caching=cache,
-            functions=function_schemas,
-        )
+        with yaspin(text="Processing...", color="cyan") as spinner:
+
+            MultiScriptHandler(role_class).handle(
+                prompt=prompt,
+                project_path = project_path,
+                model=model,
+                temperature=temperature,
+                top_p=top_p,
+                caching=cache,
+                functions=function_schemas,
+            )
+            spinner.ok("✅")  # or .fail("💥") if something went wrong
+
 
     else:
         full_completion = DefaultHandler(role_class).handle(
