@@ -74,6 +74,7 @@ def list_scripts_with_content(directory: str) -> List[Tuple[str, str]]:
          ".swift",  # Swift
          ".ts",  # TypeScript
          ".sh",  # Shell script
+         ".txt",  # text
          # Add other extensions as needed
      )
     scripts = []
