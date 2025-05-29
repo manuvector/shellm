@@ -61,6 +61,8 @@ def list_scripts_with_content(directory: str) -> List[Tuple[str, str]]:
     :param directory: The directory to search for Python scripts.
     :return: A list of tuples containing the script name and its content.
     """
+    MAX_SCRIPTS=8
+    MAX_CHARS=8000
     script_extensions = (
          ".py",  # Python
          ".js",  # JavaScript
@@ -74,6 +76,8 @@ def list_scripts_with_content(directory: str) -> List[Tuple[str, str]]:
          ".swift",  # Swift
          ".ts",  # TypeScript
          ".sh",  # Shell script
+         ".yml",
+         ".yaml",
          ".txt",  # text
          # Add other extensions as needed
      )
@@ -81,9 +85,9 @@ def list_scripts_with_content(directory: str) -> List[Tuple[str, str]]:
     filepaths = []
     for ext in script_extensions:
         filepaths =filepaths + [f for r in os.walk(directory) for f in glob.glob(os.path.join(r[0],'*'+ext))]
-    for filepath in filepaths:
+    for filepath in filepaths[:MAX_SCRIPTS]:
         with open(filepath, 'r') as file:
-            content = file.read()
+            content = file.read()[:MAX_CHARS]
         scripts.append((filepath, content))
     return scripts
 
